@@ -1,4 +1,4 @@
-import { StyleSheet } from "react-native";
+import { StatusBar, StyleSheet } from "react-native";
 import { SafeAreaView, SafeAreaProvider } from "react-native-safe-area-context";
 import StartGameScreen from "./screens/StartGameScreen";
 import { LinearGradient } from "expo-linear-gradient";
@@ -58,6 +58,7 @@ export default function App() {
   
   return (
     <SafeAreaProvider>
+      <StatusBar barStyle="light-content" />
       <LinearGradient colors={[Colors.bg900, Colors.bg800]} style={styles.rootScreen}>
         <GameBackground />
         <SafeAreaView style={styles.rootScreen}>

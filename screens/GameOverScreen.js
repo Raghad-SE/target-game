@@ -1,18 +1,36 @@
 import React from "react";
-import { View, Text, Image, StyleSheet } from "react-native";
+import { View, Text, Image, StyleSheet ,Dimensions, useWindowDimensions, ScrollView}from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import Title from "../componentes/ui/Title";
 import Colors from "../constants/colors";
 import PrimaryButton from "../componentes/ui/primaryButton";
 
+
 function GameOverScreen({ userNumber, roundsNumber, onStartNewGame }) {
+  const { width, height } = useWindowDimensions();
+
+  let imageSize = 300;
+  if (width < 350) {
+    imageSize = 150;
+  }
+
+  if (height < 450) {
+    imageSize = 80;
+  }
+
+  const imageStyle = {
+    width: imageSize,
+    height: imageSize,
+    borderRadius: imageSize / 2,
+  };
   return (
+    <ScrollView style={styles.screen}>
     <View style={styles.rootContainer}>
       <Title>Victory!</Title>
       <View style={styles.trophyContainer}>
         <Ionicons name="trophy" size={60} color={Colors.warning500} />
       </View>
-      <View style={styles.imageContainer}>
+      <View style={[styles.imageContainer, imageStyle]}>
         <Image
           source={require("../assets/images/success.png")}
           style={styles.image}
@@ -36,10 +54,14 @@ function GameOverScreen({ userNumber, roundsNumber, onStartNewGame }) {
       </Text>
       <PrimaryButton onPress={onStartNewGame}>Play Again</PrimaryButton>
     </View>
+    </ScrollView>
   );
 }
 
 const styles = StyleSheet.create({
+  screen: {
+    flex: 1,
+  },
   rootContainer: {
     flex: 1,
     padding: 24,
@@ -50,9 +72,9 @@ const styles = StyleSheet.create({
     marginVertical: 8,
   },
   imageContainer: {
-    width: 200,
-    height: 200,
-    borderRadius: 100,
+    // width: 200,
+    // height: 200,
+    // borderRadius: 100,
     borderWidth: 3,
     borderColor: Colors.neon500,
     overflow: "hidden",

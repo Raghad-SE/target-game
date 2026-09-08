@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet,Dimensions } from 'react-native';
 import Colors from '../../constants/colors';
 
 function NumberContainer({ children }) {
@@ -10,12 +10,13 @@ function NumberContainer({ children }) {
     </View>
   );
 }
+const { width, height } = Dimensions.get("window");
 
 const styles = StyleSheet.create({
   container: {
     borderWidth: 3,
     borderColor: Colors.neon500,
-    paddingHorizontal: 36,
+    paddingHorizontal: width < 380 ? 12 : 36,
     paddingVertical: 20,
     margin: 20,
     borderRadius: 16,

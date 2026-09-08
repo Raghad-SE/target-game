@@ -1,5 +1,5 @@
 import React from "react";
-import { Text, StyleSheet } from "react-native";
+import { Text, StyleSheet, Platform } from "react-native";
 import Colors from "../../constants/colors";
 
 function Title({ children }) {
@@ -12,7 +12,6 @@ const styles = StyleSheet.create({
     fontSize: 22,
     color: Colors.neon500,
     textAlign: "center",
-    borderWidth: 2,
     borderColor: Colors.neon500,
     paddingHorizontal: 20,
     paddingVertical: 12,
